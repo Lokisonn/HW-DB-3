@@ -17,7 +17,8 @@ where name not like '% %';
 
 --Название треков, которые содержат слово «мой» или «my»
 select name  from tracks
-where UPPER(name) like '%MY%' or name like '%МОЙ%';
+where lower(name) like 'мой %' or lower(name) like '% мой' or lower(name) like '% мой %' or lower(name) like 'мой' 
+or lower(name) like 'my %' or lower(name) like '% my' or lower(name) like '% my %' or lower(name) like 'my';
 
 --Задание 3
 --Количество исполнителей в каждом жанре 
@@ -98,3 +99,4 @@ group by a.name
 order by COUNT(t.id) asc
 
 limit 1
+
