@@ -29,20 +29,9 @@ group by g.name
 order by count_performers desc;
 
 --Количество треков, вошедших в альбомы 2019–2020 годов
-insert into albums  (name, yearofrelease)
-values ('Head Above Water', 2019);
-
-insert into album_performer  (album_id, performer_id)
-values (4,2);
-
-insert into tracks   (name, duration, album_id)
-values ('Crush', 213, 4);
-
-select a.name, count(t.id) as count_tracks
-from tracks t 
-left  join albums a  on a.id = t.album_id
-where a.yearofrelease = 2019 or a.yearofrelease = 2020
-group by a.name;
+select count(name) from tracks t 
+join albums a on a.album_id = t.album_id 
+where a.album_year between 2019 and 2020;
 
 --Средняя продолжительность треков по каждому альбому
 select a.name, AVG(t.duration) as avg_duration
@@ -51,11 +40,13 @@ left  join albums a  on a.id = t.album_id
 group by a.name;
 
 --Все исполнители, которые выпустили альбомы НЕ в 2020 году.
-select p.name as name_performer, a.name as name_album, a.yearofrelease
-from performers p
-join album_performer ap on ap.performer_id  = p.id
-join albums a on ap.album_id = a.id
-where a.yearofrelease != 2020;
+select name_performer from performers p 
+where name_performer not in (
+select name_performer from albums a 
+join album_performer ea on ap.album_id = a.id
+join performers p on ap.performer_id = p.id
+where a.yearofrelease = 2020);
+
 
 
 --Названия сборников, в которых присутствует конкретный исполнитель.
@@ -99,4 +90,5 @@ group by a.name
 order by COUNT(t.id) asc
 
 limit 1
+
 
