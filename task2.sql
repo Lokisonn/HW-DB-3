@@ -47,8 +47,6 @@ join album_performer ea on ap.album_id = a.id
 join performers p on ap.performer_id = p.id
 where a.yearofrelease = 2020);
 
-
-
 --Названия сборников, в которых присутствует конкретный исполнитель.
 select c.name as collection, t.name as name_track
 from collections c
@@ -58,37 +56,4 @@ join albums a on a.id = t.album_id
 join album_performer ap  on t.album_id = ap.album_id
 join performers p on p.id =ap.performer_id
 where p.name = 'Tina Turner';
-
---Задание 4
---Названия альбомов, в которых присутствуют исполнители более чем одного жанра.
-select distinct a.name as name_album
-from albums a 
-join album_performer ap on a.id =ap.album_id
-join performers p on p.id = ap.performer_id
-join genre_performer gp on p.id = gp.performer_id
-group by a.name
-having count(gp.performer_id)>1;
-
---Наименования треков, которые не входят в сборники.
-select t.name as name_track
-from tracks t 
-left join  collection_track ct  on t.id = ct.track_id
-where ct.collection_id  is  NULL;
-
---Исполнитель или исполнители, написавшие самый короткий по продолжительности трек, — теоретически таких треков может быть несколько.
-select p.name as name_perfotmer, t.duration as min_duration
-from performers p 
-join album_performer ap on p.id =ap.performer_id
-join tracks t on t.album_id = ap.album_id
-where t.duration = (select MIN(duration ) from tracks);
-
---Названия альбомов, содержащих наименьшее количество треков.
-select a.name as name_album, COUNT (t.id) as count_tracks
-from albums a
-join tracks t on a.id = t.album_id
-group by a.name 
-order by COUNT(t.id) asc
-
-limit 1
-
 
