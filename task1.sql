@@ -1,11 +1,4 @@
---жанр
-CREATE TABLE IF NOT EXISTS Genres (
-id SERIAL PRIMARY KEY, 
-name VARCHAR(80) NOT NULL
-);
---исполнитель
 -- Заполнение таблицы ЖАНРЫ
-
 INSERT INTO genre(name_genre) VALUES 
   ('country'),
   ('pop'),
@@ -75,4 +68,5 @@ INSERT INTO genre_performer    (genre_id, performer_id) VALUES
   (3,5),
   (4,1),
   (4,4);
+
 
