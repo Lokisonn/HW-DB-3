@@ -1,5 +1,5 @@
 -- Заполнение таблицы ЖАНРЫ
-INSERT INTO genre(name_genre) VALUES 
+INSERT INTO genres(name) VALUES 
   ('country'),
   ('pop'),
   ('rock'),
@@ -27,6 +27,7 @@ INSERT INTO tracks   (name, duration, album_id) VALUES
   ('The Best', 247, 1),
   ('Love Thing', 267, 1),
   ('Teardrops on my Guitar', 216, 2),
+  ('Песня для зачета', 186,2),
   ('Dangerous Woman', 236, 3),
   ('Moonligth', 202, 3);
 
@@ -68,5 +69,4 @@ INSERT INTO genre_performer    (genre_id, performer_id) VALUES
   (3,5),
   (4,1),
   (4,4);
-
 
