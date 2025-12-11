@@ -1,5 +1,5 @@
 -- Заполнение таблицы ЖАНРЫ
-INSERT INTO genres(name) VALUES 
+INSERT into genres1 (name_genre) VALUES 
   ('country'),
   ('pop'),
   ('rock'),
@@ -7,7 +7,7 @@ INSERT INTO genres(name) VALUES
 
 -- Заполнение таблицы ИСПОЛНИТЕЛИ
 
-INSERT INTO performers (name) VALUES 
+INSERT INTO performers1 (name_performers) VALUES 
   ('Taylor Swift'),
   ('Avril Lavigne'),
   ('Ariana Grande'),
@@ -16,14 +16,14 @@ INSERT INTO performers (name) VALUES
 
 -- Заполнение таблицы АЛЬБОМЫ
 
-INSERT INTO albums  (name, yearofrelease) VALUES 
+INSERT INTO albums1  (name_albums, yearofrelease) VALUES 
   ('Simple the best', 1991),
   ('Taylor Swift', 2006),
   ('Dangerous Women', 2016);
 
 -- Заполнение таблицы ТРЕКИ
 
-INSERT INTO tracks   (name, duration, album_id) VALUES 
+INSERT INTO tracks1   (name_tracks, duration, album_id) VALUES 
   ('The Best', 247, 1),
   ('Love Thing', 267, 1),
   ('Teardrops on my Guitar', 216, 2),
@@ -33,7 +33,7 @@ INSERT INTO tracks   (name, duration, album_id) VALUES
 
 -- Заполнение таблицы СБОРНИКИ
 
-INSERT INTO collections   (name, yearofrelease) VALUES 
+INSERT INTO collections1   (name_collections, yearofrelease) VALUES 
   ('collection1', 2020),
   ('collection2', 2021),
   ('collection3', 2022),
@@ -69,4 +69,3 @@ INSERT INTO genre_performer    (genre_id, performer_id) VALUES
   (3,5),
   (4,1),
   (4,4);
-
