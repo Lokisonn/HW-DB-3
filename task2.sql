@@ -30,8 +30,8 @@ order by count_performers desc;
 
 --Количество треков, вошедших в альбомы 2019–2020 годов
 select count(name) from tracks t 
-join albums a on t.album_id = t.album_id 
-where a.album_year between 2019 and 2020;
+join albums1 a on t.album_id = t.album_id 
+where a.YearOfRelease between 2019 and 2020;
 
 --Средняя продолжительность треков по каждому альбому
 select a.name, AVG(t.duration) as avg_duration
@@ -56,5 +56,6 @@ join albums a on a.id = t.album_id
 join album_performer ap  on t.album_id = ap.album_id
 join performers p on p.id =ap.performer_id
 where p.name = 'Tina Turner';
+
 
 
